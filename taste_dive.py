@@ -17,3 +17,6 @@ def get_songs_from_tastedive(music):
 #testing
 #nested dictionary of related artists printed!
 print(get_songs_from_tastedive("The 1975"))
+
+#function to make a get related artist and put to a list
+#function for the dictionary of the related artist (key) and the youtube link (value)
