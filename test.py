@@ -46,40 +46,12 @@ def create_track_price_table(filename, cur, conn):
     json_data = json.loads(filedata)
     cur.execute("CREATE TABLE IF NOT EXISTS trackprice (artist_name TEXT, track_name TEXT, track_price INTEGER)")
 
-    #counter -> don't add data for more than two artist (or more than 20 recs)
-    count = 0
-    #index for the data read in cache file (data.json) and move from one artist to the next in the list of dictionary
-    index = 0
-    
-    while count < 2:
-        #move to next artist when data has been added
-        artist_name = json_data[index]["name"]
-        track_name = json_data[count]["tracks"]
-        track_price = json_data[count]["trackprice"]
-        #check if artist name detail if in rec table already
-        cur.execute("SELECT artist_name FROM trackprice WHERE artist_name = ?" , (artist_name, ))
-        #if we find data, then we already added the 10 
-        #if we find one row, or one of the artist name, it is implied that we have the other 9 data has been added
-        row = cur.fetchone()
-        #only update counter when data is added to database
-
-        if row:
-            #go to the next artist -> index
-            #make sure data is added -> counter
-            index += 1
-            continue
-        #no artist found, we add all the recommended data for that artist
-        else:
-            #insert all recommended artist and go to counter to the next artist
-            for i in range(10):
-                row = cur.fetchone()
-                cur.execute("INSERT INTO trackprice (artist_name, track_name, track_price) VALUES (?,?,?)",(artist_name, track_name[i], track_price[i]))
-            #data has been added
-            count += 1
-            #move to the next artist
-            index += 1
-
-        
+    for dictionary in json_data:
+        artist_name = dictionary ["name"]
+        track_name = dictionary ["tracks"]
+        track_price = dictionary ["trackprice"]
+        for i in range(10):
+            cur.execute("INSERT OR IGNORE INTO trackprice (artist_name, track_name, track_price) VALUES (?,?,?)",(artist_name, track_name[i], track_price[i]))
     conn.commit()
 
 def create_recommendations_table(filename, cur, conn):
@@ -97,7 +69,7 @@ def create_recommendations_table(filename, cur, conn):
     count = 0
     #index for the data read in cache file (data.json) and move from one artist to the next in the list of dictionary
     index = 0
-    
+
     while count < 2:
         #move to next artist when data has been added
         artist_name = json_data[index]["name"]
