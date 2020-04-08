@@ -20,10 +20,9 @@ def create_artist_table(cur, conn):
     "Two Door Cinema Club", "Conan Gray", "The Wombats", "The Band CAMINO", 
     "Flor", "Lorde"]
 
-    cur.execute("DROP TABLE IF EXISTS Artists")
-    cur.execute("CREATE TABLE Artists (artist_uri TEXT PRIMARY KEY, artist_name TEXT)")
+    cur.execute("CREATE TABLE IF NOT EXISTS Artists (artist_uri TEXT PRIMARY KEY, artist_name TEXT)")
     for i in range(10):
-        cur.execute("INSERT INTO Artists (artist_uri,artist_name) VALUES (?,?)",(artist_uri[i],artists[i]))
+        cur.execute("INSERT OR IGNORE INTO Artists (artist_uri,artist_name) VALUES (?,?)",(artist_uri[i],artists[i]))
     conn.commit()
 
 def create_followers_table(filename, cur, conn):
@@ -32,13 +31,12 @@ def create_followers_table(filename, cur, conn):
     filobj.close()
     json_data = json.loads(filedata)
 
-    cur.execute("DROP TABLE IF EXISTS Followers")
-    cur.execute("CREATE TABLE Followers (artist_uri TEXT PRIMARY KEY, artist_name TEXT, followers INTEGER)")
+    cur.execute("CREATE TABLE IF NOT EXISTS Followers (artist_uri TEXT PRIMARY KEY, artist_name TEXT, followers INTEGER)")
     for dictionary in json_data:
         artist_uri = dictionary ["artist_uri"]
         artist_name = dictionary ["name"]
         followers = dictionary ["followers"]
-        cur.execute("INSERT INTO Followers (artist_uri,artist_name, followers) VALUES (?,?,?)",(artist_uri,artist_name, followers))
+        cur.execute("INSERT OR IGNORE INTO Followers (artist_uri,artist_name, followers) VALUES (?,?,?)",(artist_uri,artist_name, followers))
     conn.commit()
 
 def create_track_price_table(filename, cur, conn):
@@ -46,15 +44,14 @@ def create_track_price_table(filename, cur, conn):
     filedata = filobj.read()
     filobj.close()
     json_data = json.loads(filedata)
-    cur.execute("DROP TABLE IF EXISTS trackprice")
-    cur.execute("CREATE TABLE trackprice (artist_name TEXT, track_name TEXT, track_price INTEGER)")
+    cur.execute("CREATE TABLE IF NOT EXISTS trackprice (artist_name TEXT, track_name TEXT, track_price INTEGER)")
 
     for dictionary in json_data:
         artist_name = dictionary ["name"]
         track_name = dictionary ["tracks"]
         track_price = dictionary ["trackprice"]
         for i in range(10):
-            cur.execute("INSERT INTO trackprice (artist_name, track_name, track_price) VALUES (?,?,?)",(artist_name, track_name[i], track_price[i]))
+            cur.execute("INSERT OR IGNORE INTO trackprice (artist_name, track_name, track_price) VALUES (?,?,?)",(artist_name, track_name[i], track_price[i]))
     conn.commit()
 
 def create_recommendations_table(filename, cur, conn):
@@ -62,15 +59,43 @@ def create_recommendations_table(filename, cur, conn):
     filedata = filobj.read()
     filobj.close()
     json_data = json.loads(filedata)
-    cur.execute("DROP TABLE IF EXISTS Recommendations")
-    cur.execute("CREATE TABLE Recommendations (artist_name TEXT, recommended_artist TEXT)")
+    #if we add rec for 2 artist, we add only 20 items (At A TIME)
 
-    for dictionary in json_data:
-        artist_name = dictionary ["name"]
-        recommended_artists = dictionary ["recommendations"]
-        for i in range(10):
-            cur.execute("INSERT INTO Recommendations (artist_name, recommended_artist) VALUES (?,?)",(artist_name,recommended_artists[i]))
- 
+    #create table is not exists b/c we don't want to lose the data or overwrite the data
+    #only clear table if it does not exist
+    cur.execute("CREATE TABLE IF NOT EXISTS Recommendations (artist_name TEXT, recommended_artist TEXT)")
+
+    #counter -> don't add data for more than two artist (or more than 20 recs)
+    count = 0
+    #index for the data read in cache file (data.json) and move from one artist to the next in the list of dictionary
+    index = 0
+
+    while count < 2:
+        #move to next artist when data has been added
+        artist_name = json_data[index]["name"]
+        recommended_artists = json_data[count]["recommendations"]
+        #check if artist name detail if in rec table already
+        cur.execute("SELECT artist_name FROM Recommendations WHERE artist_name = ?" , (artist_name, ))
+        #if we find data, then we already added the 10 
+        #if we find one row, or one of the artist name, it is implied that we have the other 9 data has been added
+        row = cur.fetchone()
+        #only update counter when data is added to database
+
+        if row:
+            #go to the next artist -> index
+            #make sure data is added -> counter
+            index += 1
+            continue
+        #no artist found, we add all the recommended data for that artist
+        else:
+            #insert all recommended artist and go to counter to the next artist
+            for i in range(10):
+                row = cur.fetchone()
+                cur.execute("INSERT INTO Recommendations (artist_name, recommended_artist) VALUES (?,?)",(artist_name,recommended_artists[i]))
+            #data has been added
+            count += 1
+            #move to the next artist
+            index += 1
     conn.commit()
 
 def main():

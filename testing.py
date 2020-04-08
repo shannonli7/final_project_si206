@@ -59,7 +59,7 @@ def create_recommendations_table(filename, cur, conn):
     filedata = filobj.read()
     filobj.close()
     json_data = json.loads(filedata)
-    #if we add rec for 2 artist, we add only 20 items
+    #if we add rec for 2 artist, we add only 20 items (At A TIME)
 
     #create table is not exists b/c we don't want to lose the data or overwrite the data
     #only clear table if it does not exist
