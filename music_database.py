@@ -22,6 +22,7 @@ def create_artist_table(cur, conn):
 
     cur.execute("CREATE TABLE IF NOT EXISTS Artists (artist_uri TEXT PRIMARY KEY, artist_name TEXT)")
     for i in range(10):
+        #insert of ignore prevents duplicate keys
         cur.execute("INSERT OR IGNORE INTO Artists (artist_uri,artist_name) VALUES (?,?)",(artist_uri[i],artists[i]))
     conn.commit()
 
