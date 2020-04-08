@@ -39,6 +39,7 @@ def create_followers_table(filename, cur, conn):
         cur.execute("INSERT OR IGNORE INTO Followers (artist_uri,artist_name, followers) VALUES (?,?,?)",(artist_uri,artist_name, followers))
     conn.commit()
 
+#limited to 20 data added each time, REFRESH DATABASE AFTER EXECUTING THE FILE, and 20 data will be added each
 def create_track_price_table(filename, cur, conn):
     filobj = open(filename)
     filedata = filobj.read()
@@ -46,37 +47,30 @@ def create_track_price_table(filename, cur, conn):
     json_data = json.loads(filedata)
     cur.execute("CREATE TABLE IF NOT EXISTS trackprice (artist_name TEXT, track_name TEXT, track_price INTEGER)")
 
-    #counter -> don't add data for more than two artist (or more than 20 recs)
     count = 0
-    #index for the data read in cache file (data.json) and move from one artist to the next in the list of dictionary
     index = 0
     
     while count < 2:
-        #move to next artist when data has been added
         artist_name = json_data[index]["name"]
         track_name = json_data[count]["tracks"]
         track_price = json_data[count]["trackprice"]
-        #check if artist name detail if in rec table already
+        #say we have The 1975 set to artist_name, we check the table and it is there, we proceed
+        #to go to the next artist by the if row statement
+        #if not there, we should grab data and insert it
         cur.execute("SELECT artist_name FROM trackprice WHERE artist_name = ?" , (artist_name, ))
-        #if we find data, then we already added the 10 
-        #if we find one row, or one of the artist name, it is implied that we have the other 9 data has been added
         row = cur.fetchone()
-        #only update counter when data is added to database
 
+        #the 1975 is here already, so we go to the next artist and its already there, so move on, which is why
+        #index does not have a limit, and only count
         if row:
-            #go to the next artist -> index
-            #make sure data is added -> counter
             index += 1
             continue
-        #no artist found, we add all the recommended data for that artist
+
         else:
-            #insert all recommended artist and go to counter to the next artist
             for i in range(10):
-                row = cur.fetchone()
                 cur.execute("INSERT INTO trackprice (artist_name, track_name, track_price) VALUES (?,?,?)",(artist_name, track_name[i], track_price[i]))
-            #data has been added
+            #we want to to go the next artist and we also want to increment count for data purposes
             count += 1
-            #move to the next artist
             index += 1
 
         
@@ -118,7 +112,6 @@ def create_recommendations_table(filename, cur, conn):
         else:
             #insert all recommended artist and go to counter to the next artist
             for i in range(10):
-                row = cur.fetchone()
                 cur.execute("INSERT INTO Recommendations (artist_name, recommended_artist) VALUES (?,?)",(artist_name,recommended_artists[i]))
             #data has been added
             count += 1
