@@ -51,6 +51,9 @@ def create_track_price_table(filename, cur, conn):
     index = 0
     
     while count < 2:
+        if index >= 10:
+            print("Delete music_database.db and run again!")
+            exit()
         artist_name = json_data[index]["name"]
         track_name = json_data[count]["tracks"]
         track_price = json_data[count]["trackprice"]
@@ -93,6 +96,9 @@ def create_recommendations_table(filename, cur, conn):
     index = 0
     
     while count < 2:
+        if index >= 10:
+            print("Delete music_database.db and run again!")
+            exit()
         #move to next artist when data has been added
         artist_name = json_data[index]["name"]
         recommended_artists = json_data[count]["recommendations"]
