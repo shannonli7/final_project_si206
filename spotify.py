@@ -140,8 +140,8 @@ for d in range(len(temp_duration)):
     duration.append(temp_duration[count])
     count += 10
 
-# print(confidence)
-# print(duration)
+print(confidence)
+print(duration)
 
 
 
