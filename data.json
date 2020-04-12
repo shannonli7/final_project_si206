@@ -1,0 +1,85 @@
+[
+{
+    "name":"The 1975",
+    "artist_uri":"spotify:artist:3mIj9lX2MWuHmhNCA7LSCW",
+    "tracks": ["Somebody Else", "It's Not Living (If It's Not With You)", "Me & You Together Song", "Love It If We Made It", "The Birthday Party", "Be My Mistake", "TOOTIMETOOTIMETOOTIME", "Sincerity Is Scary", "Narcissist (feat. The 1975)", "I Always Wanna Die (Sometimes)"],
+    "followers": 3922606,
+    "trackprice": [1.29, 1.29, 1.29, 1.29, 1.29, 1.29, 1.99, 1.29, 1.99, 1.29],
+    "recommendations": ["The Neighbourhood", "Catfish And The Bottlemen", "Coasts", "The Neighborhood", "Lewis Watson", "Swim Deep", "Lany", "Bad Suns", "Kodaline", "Saint Raymond"]
+
+}, 
+{
+    "name":"The Japanese House",
+    "artist_uri":"spotify:artist:3IunaFjvNKj98JW89JYv9u",
+    "tracks": ["Saw You In A Dream", "Chewing Cotton Wool", "Something Has to Change", "Maybe You're the Reason", "Lilo", "You Seemed so Happy", "i saw you in a dream", "Cool Blue", "Landslide - Recorded At Spotify Studios NYC", "Still"],
+    "followers": 354715,
+    "trackprice": [1.29, 1.29, 1.29, 1.29, 1.99, 1.29, 1.29, 1.99, 1.29, 1.29],
+    "recommendations": ["Phoebe Bridgers", "Day Wave", "Pale Waves", "Boy Pablo", "Varsity", "Lany", "Gus Dapperton", "Wallows", "Dandelion Hands", "Girl In Red"]
+},
+{
+    "name": "Bleachers",
+    "artist_uri": "spotify:artist:2eam0iDomRHGBypaDQLwWI",
+    "tracks": ["Rollercoaster", "I Wanna Get Better", "Don't Take The Money", "Goodmorning", "Wake Me", "Let's Get Married", "Like a River Runs", "Wild Heart", "I Miss Those Days", "Entropy"],
+    "followers": 364344,
+    "trackprice": [1.29, 1.29, 1.99, 1.29, 1.00, 1.29, 1.29, 1.99, 1.29, 1.29],
+    "recommendations": ["Hunter Hunted", "The Griswolds", "The Colourist", "Magic Man", "The Mowgli's", "Ghost Beach", "Wild Cub", "Young Rising Sons", "Smallpools", "Autoheart"]
+},
+{
+    "name": "Lauv",
+    "artist_uri": "spotify:artist:5JZ7CnR6gTvEMKX4g70Amv",
+    "tracks": ["I Like Me Better", "Who (feat. BTS)", "i'm so tired...", "fuck, i'm lonely (with Anne-Marie)", "Modern Loneliness", "Mean It", "Invisible Things", "Make It Right (feat. Lauv)", "Tattoos Together", "Feelings"],
+    "followers": 2589051,
+    "trackprice": [1.00, 1.29, 1.99, 1.29, 0.99, 0.99, 1.29, 1.99, 1.29, 1.29],
+    "recommendations": ["Quinn Xcii", "Lany", "Olivia O'brien", "Yungblud", "Astrid S", "Gnash", "Dean Lewis", "Wrabel", "Syml", "Sasha Sloan"]
+},
+{
+    "name": "Two Door Cinema Club",
+    "artist_uri": "spotify:artist:536BYVgOnRky0xjsPT96zl",
+    "tracks": ["What You Know", "Undercover Martyn", "Something Good Can Work", "Sun", "Changing of the Seasons", "I Can Talk", "Are We Ready? (Wreck)", "Sleep Alone", "Talk - Single Edit", "Next Year"],
+    "followers": 1833816,
+    "trackprice": [1.29, 1.29, 1.29, 1.99, 1.29, 1.29, 1.00, 1.29, 1.29, 1.29],
+    "recommendations": ["Bombay Bicycle Club", "Darwin Deez", "The Wombats", "The Temper Trap", "The Naked And Famous", "Friendly Fires", "The Vaccines", "The Drums", "San Cisco", "Miike Snow"]
+},   
+{
+    "name": "Conan Gray",
+    "artist_uri": "spotify:artist:4Uc8Dsxct0oMqx0P6i60ea",
+    "tracks": ["Maniac", "Crush Culture", "Generation Why", "The Story", "Lookalike", "Wish You Were Sober", "Heather", "Idle Town", "The King", "Comfort Crowd"],
+    "followers": 951347,
+    "trackprice": [1.29, 1.99, 1.00, 1.29, 1.29, 1.99, 1.29, 1.29, 0.69, 1.29],
+    "recommendations": ["Mxmtoon", "Sasha Sloan", "Cavetown", "Declan Mckenna", "Girl In Red", "Fur", "Wallows", "Clairo", "Why Don't We", "Simon Vs. The Homo Sapiens Agenda"]
+},
+{
+    "name": "The Wombats",
+    "artist_uri": "spotify:artist:0Ya43ZKWHTKkAbkoJJkwIB",
+    "tracks": ["Let's Dance to Joy Division", "Kill the Director", "Moving to New York", "Turn", "Tokyo - Vampires & Wolves", "Cheetah Tongue", "Lemon to a Knife Fight", "Greek Tragedy", "Pink Lemonade", "Lethal Combination"],
+    "followers":  761801,
+    "trackprice": [1.29, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29],
+    "recommendations": ["The Pigeon Detectives", "The Holloways", "The Hoosiers", "The Courteeners", "The Vaccines", "Milburn", "The View", "Jack Peñate", "The Enemy", "The Maccabees"]
+},
+{
+    "name":  "The Band CAMINO",
+    "artist_uri": "spotify:artist:6d4jrmreCmsenscuieJERc",
+    "tracks": ["2 / 14", "Less Than I Do", "See Through", "Daphne Blue", "My Thoughts On You", "The Black and White", "Know Me", "Berenstein", "Fool of Myself", "Hush Hush"],
+    "followers": 151465,
+    "trackprice": [1.29, 1.29, 1.29, 0.99, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29],
+    "recommendations": ["Hayley Kiyoko", "The Wldlfe", "Flor", "Troye Sivan", "Joan", "Paramore", "The Truman Show", "COIN", "Smallpools", "Bad Suns"]
+},
+{
+    "name": "Flor",
+    "artist_uri":"spotify:artist:0szWPxzzE8DVEfXFRCLBUb",
+    "tracks": ["dancing around", "back again", "hold on", "yellow (feat. MisterWives)", "slow motion", "warm blood", "where do you go", "heart", "rely", "slow motion"],
+    "followers": 3648080,
+    "trackprice": [0.99, 1.29, 0.69, 1.29, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99],
+    "recommendations": ["Wild Party", "The Academic", "Coast Modern", "Max Frost", "Grizfolk", "Cruisr", "Coin", "Rina Sawayama", "Young Rising Sons", "S Club 7"]
+},
+{
+    "name": "Lorde",
+    "artist_uri":  "spotify:artist:163tK9Wjr9P9DmM0AVK7lm",
+    "tracks": ["Royals", "Team", "Ribs", "Green Light", "Liability", "Tennis Court", "Supercut", "Perfect Places", "Homemade Dynamite - REMIX", "The Love Club"],
+    "followers": 5626478,
+    "trackprice": [1.29, 1.29, 1.00, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29, 1.29] ,
+    "recommendations": ["Charli Xcx", "Icona Pop", "Foxes", "Tove Lo", "Haim", "Sky Ferreira", "Broods", "Florence Welch", "Echosmith", "Ms Mr"]
+}
+]
+
+
