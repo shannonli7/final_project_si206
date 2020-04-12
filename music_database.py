@@ -56,8 +56,10 @@ def create_track_price_table(filename, cur, conn):
             print("Delete music_database.db and run again!")
             exit()
         artist_name = json_data[index]["name"]
-        track_name = json_data[count]["tracks"]
-        track_price = json_data[count]["trackprice"]
+        track_name = json_data[index]["tracks"]
+        # print(index)
+        # print(track_name)
+        track_price = json_data[index]["trackprice"]
         #say we have The 1975 set to artist_name, we check the table and it is there, we proceed
         #to go to the next artist by the if row statement
         #if not there, we should grab data and insert it

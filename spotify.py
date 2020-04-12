@@ -26,9 +26,7 @@ artist10_uri = 'spotify:artist:163tK9Wjr9P9DmM0AVK7lm'
 #set SPOTIPY_CLIENT_ID and SPOTIPY_CLIENT_SECRET
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials("17f86f3cbfd64d5e8d650c809760fee0", "315a2c5b3f924ef6bf86af634ff4dce1"))
 #predefined functions of spotify's api
-#audio_analysis
-#result = spotify.audio_analysis("spotify:track:5hc71nKsUgtwQ3z52KEKQk")
-#print(results)s
+
 def get_tracks(artist_uri):
     dictionary = {}
     lst_of_tracks = []
@@ -112,7 +110,8 @@ artist10["followers"]= get_followers(artist10) #5626478
 artist10["track_prices"] = track_prices10
 lst_of_dictionary.append(artist10)
 
-#print(lst_of_dictionary)
+print(lst_of_dictionary)
+
 track_uri = "spotify:track:035QPHPAcqApSGMMcogT45"
 #Audio Analysis of A Change of Heart by The 1975 or Visualization
 audio_result = spotify.audio_analysis(track_uri)
@@ -140,8 +139,6 @@ for d in range(len(temp_duration)):
     duration.append(temp_duration[count])
     count += 10
 
-print(confidence)
-print(duration)
 
 
 

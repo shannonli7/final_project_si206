@@ -33,23 +33,6 @@ for num in range(110):
     total += 2.57
     interval.append(round(total,2))
 
-# fig = go.Figure()
-# #x-value = duration of song //interval
-# #y-value = confidence/loudness //confidence
-# fig.add_trace(go.Scatter(
-#     fill='toself',
-#     fillcolor='rgba(231,107,243,0.2)',
-#     line_color='rgba(255,255,255,0)',
-#     showlegend=False,
-# ))
-
-# fig.add_trace(go.Scatter(x=interval, y=confidence, name='Loudness',
-#                          line=dict(color='rgb(231,107,243)', width=4)))
-
-# fig.update_layout(title='Audio Analysis of Loudness Level through A Change of Heart By The 1975',
-#                    xaxis_title='Duration of Song',
-#                    yaxis_title='Loudness Level')
-
 x_rev = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 fig = go.Figure()

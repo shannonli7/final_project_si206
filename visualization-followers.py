@@ -37,8 +37,6 @@ plt.xticks(rotation=20, family='monospace', weight="semibold", size="small")
 plt.yticks(family='monospace', weight="semibold", size="small")
 
 
-# ax.set(xlabel='Artists', ylabel='Number of Followers (Spotify API)',
-#        title='Follower Count of Each Artist Recorded from Spotify')
 ax.set_title("Follower Count of Each Artist Recorded from Spotify", fontname="monospace", weight="heavy", size=20)
 ax.set_xlabel("Artists", fontname="monospace", weight="bold", color="white", bbox={'facecolor': '#343434', 'alpha': 0.9})
 ax.set_ylabel("Number of Followers (Spotify API)", fontname="monospace", weight="bold", color="white", bbox={'facecolor': '#343434', 'alpha': 0.9})
@@ -47,7 +45,6 @@ ax = plt.gca()
 for i, v in enumerate(followersList):
     plt.text(xlocs[i] - 0.32, v + 0.60, str(v), color="white", weight="black")
 
-#BACKGROUND COLOR
 ax.set_facecolor('#535353')
 
 # save the figure
